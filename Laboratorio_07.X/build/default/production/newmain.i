@@ -2652,34 +2652,70 @@ extern __bank0 __bit __timeout;
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c90\\stdint.h" 1 3
 # 25 "newmain.c" 2
+# 35 "newmain.c"
+unsigned int CCPR1VAR = 0;
+unsigned int CCPR2VAR = 0;
 
 
-
+unsigned int map(uint8_t INPUT, uint8_t IN_MIN, uint8_t IN_MAX,
+        unsigned int OUT_MIN, unsigned int OUT_MAX);
 
 
 void __attribute__((picinterrupt(("")))) isr(void) {
+    if (PIR1bits.ADIF) {
+        if (ADCON0bits.CHS == 0b0000){
+            CCPR1VAR = map(ADRESH, 0, 255, 100, 600);
+            CCPR1L = (uint8_t)(CCPR1VAR>>2);
+            CCP1CONbits.DC1B = CCPR1VAR & 0b11;
+
+        }
+        else if (ADCON0bits.CHS == 0b0100){
+            CCPR2VAR = map(ADRESH, 0, 255, 100, 600);
+            CCPR2L = (uint8_t)(CCPR2VAR>>2);
+            CCP2CONbits.DC2B0 = CCPR2VAR & 0b01;
+            CCP2CONbits.DC2B1 = CCPR2VAR & 0b10;
+
+        }
+        PIR1bits.ADIF = 0;
     }
+}
 
 
 void setup(void);
 void setupPWM(void);
+void setupADC(void);
+
 
 
 void main(void) {
 
     setup ();
     setupPWM ();
+    setupADC ();
     while(1){
-        CCPR1L = 0b01111101;
-        CCP1CONbits.DC1B = 0b00;
-    }
+        _delay((unsigned long)((10)*(4000000/4000.0)));
+        if (ADCON0bits.GO == 0) {
+            if (ADCON0bits.CHS == 0b0000){
+            ADCON0bits.CHS = 0b0100;
+            }
+        else if (ADCON0bits.CHS == 0b0100){
+            ADCON0bits.CHS = 0b0000;
+            }
+            ADCON0bits.GO = 1;
+            _delay((unsigned long)((20)*(4000000/4000000.0)));
+        }
 
+
+
+    }
+    return;
 }
 
 
 void setup(void){
 
-    ANSEL = 0;
+    ANSELbits.ANS0 = 1;
+    ANSELbits.ANS4 = 1;
     ANSELH = 0;
 
 
@@ -2693,7 +2729,7 @@ void setup(void){
     PORTE = 0;
 
 
-    OSCCONbits.IRCF = 0b111 ;
+    OSCCONbits.IRCF = 0b110 ;
     OSCCONbits.SCS = 1;
 
 
@@ -2702,21 +2738,33 @@ void setup(void){
     INTCONbits.PEIE = 1;
 
 
-
+    PIE1bits.ADIE = 1;
+    PIR1bits.ADIF = 0;
 
 
 }
 
 
 void setupPWM(void){
+
+    TRISCbits.TRISC1 = 1;
     TRISCbits.TRISC2 = 1;
-    PR2 = 199;
+    PR2 = 249;
+
+    CCP1CON = 0;
+    CCP2CON = 0;
 
     CCP1CONbits.P1M = 0;
     CCP1CONbits.CCP1M = 0b00001100;
+    CCP2CONbits.CCP2M = 0b00001100;
 
-    CCPR1L = 0b01111101;
-    CCP1CONbits.DC1B = 0b00;
+    CCPR1L = 250 >> 2;
+    CCP1CONbits.DC1B = 250 & 0b11;
+
+    CCPR2L = 250 >> 2;
+    CCP2CONbits.DC2B0 = 250 & 0b01;
+    CCP2CONbits.DC2B1 = 250 & 0b10;
+
 
 
     PIR1bits.TMR2IF = 0;
@@ -2726,4 +2774,35 @@ void setupPWM(void){
     while (PIR1bits.TMR2IF == 0);
     PIR1bits.TMR2IF = 0;
     TRISCbits.TRISC2 = 0;
+    TRISCbits.TRISC1 = 0;
 }
+
+
+void setupADC(void){
+
+    ADCON0bits.CHS = 0b0000;
+
+
+
+    ADCON1bits.VCFG1 = 0;
+    ADCON1bits.VCFG0 = 0;
+
+
+    ADCON0bits.ADCS = 0b10;
+
+
+
+
+
+    ADCON1bits.ADFM = 0;
+
+
+    ADCON0bits.ADON = 1;
+    _delay((unsigned long)((1)*(4000000/4000.0)));
+}
+# 194 "newmain.c"
+unsigned int map(uint8_t INPUT, uint8_t IN_MIN, uint8_t IN_MAX,
+        unsigned int OUT_MIN, unsigned int OUT_MAX){
+    return (unsigned int)(OUT_MIN+((float)(OUT_MAX-OUT_MIN)/(IN_MAX-IN_MIN))
+            *(INPUT-IN_MIN));
+};
