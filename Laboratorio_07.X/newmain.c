@@ -23,6 +23,14 @@
 
 #include <xc.h>
 #include <stdint.h>
+// incluir librerias de postlab
+#include "PWM.h"
+#include "PWMmanual.h"
+
+// definir variables para el TMR0 y la salida del PWM MANUAL
+#define TMR0_VAL 249 // valor necesario para 0.015 us
+#define PWM_VAR PORTCbits.RC3 // para poder cambiar el pin de salida de manera sencilla
+uint8_t LED_PWM; // variable para almacenar el valor del ADC
 
 #define _XTAL_FREQ 4000000 // establecer oscilador intero a 4 MHz
 
@@ -42,20 +50,26 @@ unsigned int map(uint8_t INPUT, uint8_t IN_MIN, uint8_t IN_MAX,
 // --------------- Rutina de  interrupciones --------------- 
 void __interrupt() isr(void) {
     if (PIR1bits.ADIF) { // si se activa la bandera de interrupcion del ADC
-        if (ADCON0bits.CHS == 0b0000){ // si está en ADC AN0
+        if (ADCON0bits.CHS == 0b0000){ // si está en ADC AN0, RA1
             CCPR1VAR = map(ADRESH, inputmin, inputmax, outmin, outmax); // Mappear el valor del potenciometro a los valores necesarios para el CCPR1L
             CCPR1L = (uint8_t)(CCPR1VAR>>2); // Elimina los dos bits menos significativos y lo guarda en CCPR1L
             CCP1CONbits.DC1B = CCPR1VAR & 0b11; // Guarda los dos bits menos significativos en DC1B
            // ADCON0bits.CHS = 0b0100;
         }
-        else if (ADCON0bits.CHS == 0b0100){ // si está en ADC AN5
+        else if (ADCON0bits.CHS == 0b0100){ // si está en ADC AN4, RA5
             CCPR2VAR = map(ADRESH, inputmin, inputmax, outmin, outmax); // Mappear el valor del potenciometro a los valores necesarios para el CCPR2L
             CCPR2L = (uint8_t)(CCPR2VAR>>2); // Elimina los dos bits menos significativos y lo guarda en CCPR2L
             CCP2CONbits.DC2B0 = CCPR2VAR & 0b01; // Guardar el primer bit menos significativo
             CCP2CONbits.DC2B1 = CCPR2VAR & 0b10; // Guardar el segundo bit menos significativo
             //ADCON0bits.CHS = 0b0000; // cambiar a ADC AN0
         }
+        else if (ADCON0bits.CHS == 0b0101){ // si está en ADC AN5, RE0
+            LED_PWM = ADRESH; // Enviar el valor del potenciometro a la variable 
+        }
         PIR1bits.ADIF = 0; // limpiar la bandera de la interrupcion
+    }
+    if (INTCONbits.T0IF){
+        PWMmanual_INT();
     }
 }
 
@@ -69,32 +83,42 @@ void setupADC(void);
 void main(void) {
     
     setup ();
-    setupPWM ();
+    //setupPWM ();
     setupADC ();
+    PWMmanual_setup();
+    
+    PWM_SETUP(1, 4); // Canal CCP1, periodo de 4ms
+    PWM_SETUP(2, 4); // Canal CCP2, periodo de 4ms
+
+    // Ciclo de trabajo inicial del 50%
+    PWM_DUTY(1, 250); // Canal CCP1 al 50%
+    PWM_DUTY(2, 250); // Canal CCP2 al 50%
+    
     while(1){
         __delay_ms(10);
         if (ADCON0bits.GO == 0) { // si la lectura del ADC se desactiva
             if (ADCON0bits.CHS == 0b0000){ // si está en ADC AN0
             ADCON0bits.CHS = 0b0100;
             }
-        else if (ADCON0bits.CHS == 0b0100){ // si está en ADC AN5
+            else if (ADCON0bits.CHS == 0b0100){ // si está en ADC AN4
+            ADCON0bits.CHS = 0b0101; // cambiar a ADC AN5
+            }
+            else if (ADCON0bits.CHS == 0b0101){ // si está en ADC AN5
             ADCON0bits.CHS = 0b0000; // cambiar a ADC AN0
             }
-            ADCON0bits.GO = 1;
+            ADCON0bits.GO = 1; // activar lectura del ADC 
             __delay_us(20);
         }
-        
-        
-        
     }
     return;
 }
 
 // --------------- Setup General --------------- 
 void setup(void){
-    // --------------- Definir como digitales --------------- 
+    // --------------- Definir analogicas --------------- 
     ANSELbits.ANS0 = 1;
     ANSELbits.ANS4 = 1;
+    ANSELbits.ANS5 = 1;
     ANSELH = 0;
 
     // --------------- Configurar puertos --------------- 
@@ -115,6 +139,8 @@ void setup(void){
     // --------------- Banderas e interrupciones --------------- 
     INTCONbits.GIE = 1; // habilitar interrupciones globales
     INTCONbits.PEIE = 1; // habilitar interrupciones perifericas
+    INTCONbits.T0IE = 1; // habilitar interrupcion TMR0
+    INTCONbits.T0IF = 1; // habilitar bandera TMR0
     //PIE1bits.TMR2IE = 1; // habilitar interrupciones de TMR2
     //PIR1bits.TMR2IF = 0; // limpiar la bandera de interrupcion del TMR2
     PIE1bits.ADIE = 1; // habilitar interrupciones de ADC
@@ -124,37 +150,37 @@ void setup(void){
 }
 
 // --------------- Setup PWM --------------- 
-void setupPWM(void){
+//void setupPWM(void){
     // --------------- CCP1 ---------------
-    TRISCbits.TRISC1 = 1; // Habilitar CCP2 como entrada
-    TRISCbits.TRISC2 = 1; // Habilitar CCP1 como entrada
-    PR2 = 249; // Utilizar periodo de 4 ms del TMR2
+//    TRISCbits.TRISC1 = 1; // Habilitar CCP2 como entrada
+//    TRISCbits.TRISC2 = 1; // Habilitar CCP1 como entrada
+//    PR2 = 249; // Utilizar periodo de 4 ms del TMR2
     
-    CCP1CON = 0;
-    CCP2CON = 0;
+//    CCP1CON = 0;
+//    CCP2CON = 0;
     
-    CCP1CONbits.P1M = 0; // Habilitar modo single output
-    CCP1CONbits.CCP1M = 0b00001100; // Habilitar modo PWM, P1A y P1C HIGH Y P1B y P1D LOW
-    CCP2CONbits.CCP2M = 0b00001100; // Habilitar modo PWM, P1A y P1C HIGH Y P1B y P1D LOW
+//    CCP1CONbits.P1M = 0; // Habilitar modo single output
+//    CCP1CONbits.CCP1M = 0b00001100; // Habilitar modo PWM, P1A y P1C HIGH Y P1B y P1D LOW
+//    CCP2CONbits.CCP2M = 0b00001100; // Habilitar modo PWM, P1A y P1C HIGH Y P1B y P1D LOW
     
-    CCPR1L = 250 >> 2; // Valor necesario para establecer servo en 90 grados, ancho de pulso 1 ms
-    CCP1CONbits.DC1B = 250 & 0b11; // Establecer los bits menos significativos
-    
-    CCPR2L = 250 >> 2; // Valor necesario para establecer servo en 90 grados, ancho de pulso 1 ms
-    CCP2CONbits.DC2B0 = 250 & 0b01;
-    CCP2CONbits.DC2B1 = 250 & 0b10;
-    
-    
-    // --------------- TMR2 ---------------
-    PIR1bits.TMR2IF = 0; // Reiniciar la bandera de interrupcion del TMR2
-    T2CONbits.T2CKPS = 0b11; // Establecer prescaler de TMR2 en 1:16
-    T2CONbits.TMR2ON = 1; // Encender el TMR2
-    
-    while (PIR1bits.TMR2IF == 0);
-    PIR1bits.TMR2IF = 0;
-    TRISCbits.TRISC2 = 0;
-    TRISCbits.TRISC1 = 0;
-}
+//    CCPR1L = 250 >> 2; // Valor necesario para establecer servo en 90 grados, ancho de pulso 1 ms
+//    CCP1CONbits.DC1B = 250 & 0b11; // Establecer los bits menos significativos
+//    
+//    CCPR2L = 250 >> 2; // Valor necesario para establecer servo en 90 grados, ancho de pulso 1 ms
+//    CCP2CONbits.DC2B0 = 250 & 0b01;
+//    CCP2CONbits.DC2B1 = 250 & 0b10;
+//    
+//    
+//    // --------------- TMR2 ---------------
+//    PIR1bits.TMR2IF = 0; // Reiniciar la bandera de interrupcion del TMR2
+//    T2CONbits.T2CKPS = 0b11; // Establecer prescaler de TMR2 en 1:16
+//    T2CONbits.TMR2ON = 1; // Encender el TMR2
+//    
+//    while (PIR1bits.TMR2IF == 0);
+//    PIR1bits.TMR2IF = 0;
+//    TRISCbits.TRISC2 = 0;
+//    TRISCbits.TRISC1 = 0;
+//}
 
 // --------------- Setup del ADC --------------- 
 void setupADC(void){

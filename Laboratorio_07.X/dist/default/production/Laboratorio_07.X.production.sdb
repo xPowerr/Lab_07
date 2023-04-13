@@ -5,43 +5,69 @@
 [d frameptr 0 ]
 "43 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\fltol.c
 [v ___fltol __fltol `(l  1 e 4 0 ]
+[v i1___fltol __fltol `(l  1 e 4 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
+[v i1___fladd __fladd `(d  1 e 4 0 ]
 "8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\sprcdiv.c
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
+[v i1___fldiv __fldiv `(d  1 e 4 0 ]
 "8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
+[v i1___flmul __flmul `(d  1 e 4 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+[v i1__Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
+[v i1___xxtofl __xxtofl `(d  1 e 4 0 ]
 "6 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\pic\__eeprom.c
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"43 C:\Users\Gabriel\OneDrive - Universidad del Valle de Guatemala\Documentos\Universidad\Quinto Semestre\Tareas\Programación de Microcontroladores\Labs\Lab_07\Laboratorio_07.X\newmain.c
+"51 C:\Users\Gabriel\OneDrive - Universidad del Valle de Guatemala\Documentos\Universidad\Quinto Semestre\Tareas\Programación de Microcontroladores\Labs\Lab_07\Laboratorio_07.X\newmain.c
 [v _isr isr `II(v  1 e 1 0 ]
-"69
+"83
 [v _main main `(v  1 e 1 0 ]
-"94
+"117
 [v _setup setup `(v  1 e 1 0 ]
-"127
-[v _setupPWM setupPWM `(v  1 e 1 0 ]
-"160
+"186
 [v _setupADC setupADC `(v  1 e 1 0 ]
-"194
+"220
 [v _map map `(ui  1 e 2 0 ]
-"167 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h
+"17 C:\Users\Gabriel\OneDrive - Universidad del Valle de Guatemala\Documentos\Universidad\Quinto Semestre\Tareas\Programación de Microcontroladores\Labs\Lab_07\Laboratorio_07.X\PWM.c
+[v _PWM_SETUP PWM_SETUP `(v  1 e 1 0 ]
+"41
+[v _PWM_DUTY PWM_DUTY `(v  1 e 1 0 ]
+"19 C:\Users\Gabriel\OneDrive - Universidad del Valle de Guatemala\Documentos\Universidad\Quinto Semestre\Tareas\Programación de Microcontroladores\Labs\Lab_07\Laboratorio_07.X\PWMmanual.c
+[v _PWMmanual_setup PWMmanual_setup `(v  1 e 1 0 ]
+"34
+[v _PWMmanual_INT PWMmanual_INT `(v  1 e 1 0 ]
+"60 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h
+[v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
+"167
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
 "229
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
 "291
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
+[s S556 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"308
+[u S565 . 1 `S556 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES565  1 e 1 @7 ]
 "353
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
 "415
 [v _PORTE PORTE `VEuc  1 e 1 @9 ]
-[s S236 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S164 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -51,13 +77,13 @@
 `uc 1 GIE 1 0 :1:7 
 ]
 "483
-[s S245 . 1 `uc 1 . 1 0 :2:0 
+[s S173 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
-[u S250 . 1 `S236 1 . 1 0 `S245 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES250  1 e 1 @11 ]
+[u S178 . 1 `S164 1 . 1 0 `S173 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES178  1 e 1 @11 ]
 [s S22 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
@@ -69,12 +95,12 @@
 "554
 [u S30 . 1 `S22 1 . 1 0 ]
 [v _PIR1bits PIR1bits `VES30  1 e 1 @12 ]
-[s S311 . 1 `uc 1 T2CKPS 1 0 :2:0 
+[s S409 . 1 `uc 1 T2CKPS 1 0 :2:0 
 `uc 1 TMR2ON 1 0 :1:2 
 `uc 1 TOUTPS 1 0 :4:3 
 ]
 "794
-[s S315 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+[s S413 . 1 `uc 1 T2CKPS0 1 0 :1:0 
 `uc 1 T2CKPS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 TOUTPS0 1 0 :1:3 
@@ -82,8 +108,8 @@
 `uc 1 TOUTPS2 1 0 :1:5 
 `uc 1 TOUTPS3 1 0 :1:6 
 ]
-[u S323 . 1 `S311 1 . 1 0 `S315 1 . 1 0 ]
-[v _T2CONbits T2CONbits `VES323  1 e 1 @18 ]
+[u S421 . 1 `S409 1 . 1 0 `S413 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES421  1 e 1 @18 ]
 "928
 [v _CCPR1L CCPR1L `VEuc  1 e 1 @21 ]
 "942
@@ -151,9 +177,23 @@
 ]
 [u S61 . 1 `S41 1 . 1 0 `S46 1 . 1 0 `S55 1 . 1 0 `S58 1 . 1 0 ]
 [v _ADCON0bits ADCON0bits `VES61  1 e 1 @31 ]
+[s S529 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+"1367
+[s S536 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+]
+[u S540 . 1 `S529 1 . 1 0 `S536 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES540  1 e 1 @129 ]
 "1541
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
-[s S287 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S437 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -163,9 +203,9 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1558
-[u S296 . 1 `S287 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES296  1 e 1 @135 ]
-[s S268 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[u S446 . 1 `S437 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES446  1 e 1 @135 ]
+[s S284 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -174,34 +214,34 @@
 `uc 1 ADIE 1 0 :1:6 
 ]
 "1719
-[u S276 . 1 `S268 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES276  1 e 1 @140 ]
-[s S210 . 1 `uc 1 SCS 1 0 :1:0 
+[u S292 . 1 `S284 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES292  1 e 1 @140 ]
+[s S258 . 1 `uc 1 SCS 1 0 :1:0 
 `uc 1 LTS 1 0 :1:1 
 `uc 1 HTS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 ]
 "1883
-[s S216 . 1 `uc 1 . 1 0 :4:0 
+[s S264 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 IRCF0 1 0 :1:4 
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S221 . 1 `S210 1 . 1 0 `S216 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES221  1 e 1 @143 ]
+[u S269 . 1 `S258 1 . 1 0 `S264 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES269  1 e 1 @143 ]
 "2042
 [v _PR2 PR2 `VEuc  1 e 1 @146 ]
-[s S339 . 1 `uc 1 . 1 0 :4:0 
+[s S303 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 VCFG0 1 0 :1:4 
 `uc 1 VCFG1 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "2992
-[u S345 . 1 `S339 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES345  1 e 1 @159 ]
-[s S182 . 1 `uc 1 ANS0 1 0 :1:0 
+[u S309 . 1 `S303 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES309  1 e 1 @159 ]
+[s S230 . 1 `uc 1 ANS0 1 0 :1:0 
 `uc 1 ANS1 1 0 :1:1 
 `uc 1 ANS2 1 0 :1:2 
 `uc 1 ANS3 1 0 :1:3 
@@ -211,100 +251,123 @@
 `uc 1 ANS7 1 0 :1:7 
 ]
 "3405
-[u S191 . 1 `S182 1 . 1 0 ]
-[v _ANSELbits ANSELbits `VES191  1 e 1 @392 ]
+[u S239 . 1 `S230 1 . 1 0 ]
+[v _ANSELbits ANSELbits `VES239  1 e 1 @392 ]
 "3450
 [v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
-"35 C:\Users\Gabriel\OneDrive - Universidad del Valle de Guatemala\Documentos\Universidad\Quinto Semestre\Tareas\Programación de Microcontroladores\Labs\Lab_07\Laboratorio_07.X\newmain.c
+"43 C:\Users\Gabriel\OneDrive - Universidad del Valle de Guatemala\Documentos\Universidad\Quinto Semestre\Tareas\Programación de Microcontroladores\Labs\Lab_07\Laboratorio_07.X\newmain.c
 [v _CCPR1VAR CCPR1VAR `ui  1 e 2 0 ]
-"36
+"44
 [v _CCPR2VAR CCPR2VAR `ui  1 e 2 0 ]
-"69
+"14 C:\Users\Gabriel\OneDrive - Universidad del Valle de Guatemala\Documentos\Universidad\Quinto Semestre\Tareas\Programación de Microcontroladores\Labs\Lab_07\Laboratorio_07.X\PWMmanual.c
+[v _LED_VAR LED_VAR `uc  1 e 1 0 ]
+"15
+[v _LED_PWM LED_PWM `uc  1 e 1 0 ]
+"83 C:\Users\Gabriel\OneDrive - Universidad del Valle de Guatemala\Documentos\Universidad\Quinto Semestre\Tareas\Programación de Microcontroladores\Labs\Lab_07\Laboratorio_07.X\newmain.c
 [v _main main `(v  1 e 1 0 ]
 {
-"91
+"114
 } 0
-"127
-[v _setupPWM setupPWM `(v  1 e 1 0 ]
-{
-"157
-} 0
-"160
+"186
 [v _setupADC setupADC `(v  1 e 1 0 ]
 {
-"181
+"207
 } 0
-"94
+"117
 [v _setup setup `(v  1 e 1 0 ]
 {
-"124
+"150
 } 0
-"43
-[v _isr isr `II(v  1 e 1 0 ]
+"19 C:\Users\Gabriel\OneDrive - Universidad del Valle de Guatemala\Documentos\Universidad\Quinto Semestre\Tareas\Programación de Microcontroladores\Labs\Lab_07\Laboratorio_07.X\PWMmanual.c
+[v _PWMmanual_setup PWMmanual_setup `(v  1 e 1 0 ]
 {
-"60
+"31
 } 0
-"194
-[v _map map `(ui  1 e 2 0 ]
+"17 C:\Users\Gabriel\OneDrive - Universidad del Valle de Guatemala\Documentos\Universidad\Quinto Semestre\Tareas\Programación de Microcontroladores\Labs\Lab_07\Laboratorio_07.X\PWM.c
+[v _PWM_SETUP PWM_SETUP `(v  1 e 1 0 ]
 {
-[v map@INPUT INPUT `uc  1 a 1 wreg ]
-[v map@INPUT INPUT `uc  1 a 1 wreg ]
-[v map@IN_MIN IN_MIN `uc  1 p 1 2 ]
-[v map@IN_MAX IN_MAX `uc  1 p 1 3 ]
-"195
-[v map@OUT_MIN OUT_MIN `ui  1 p 2 4 ]
-[v map@OUT_MAX OUT_MAX `ui  1 p 2 6 ]
-[v map@INPUT INPUT `uc  1 a 1 8 ]
-"198
+[v PWM_SETUP@channel channel `uc  1 a 1 wreg ]
+[v PWM_SETUP@channel channel `uc  1 a 1 wreg ]
+[v PWM_SETUP@periodo_ms periodo_ms `f  1 p 4 51 ]
+[v PWM_SETUP@channel channel `uc  1 a 1 59 ]
+"39
+} 0
+"10 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+{
+"17
+[v ___fladd@grs grs `uc  1 a 1 40 ]
+"15
+[v ___fladd@bexp bexp `uc  1 a 1 39 ]
+"16
+[v ___fladd@aexp aexp `uc  1 a 1 38 ]
+"13
+[v ___fladd@signs signs `uc  1 a 1 37 ]
+"10
+[v ___fladd@b b `d  1 p 4 21 ]
+[v ___fladd@a a `d  1 p 4 25 ]
+"237
+} 0
+"41 C:\Users\Gabriel\OneDrive - Universidad del Valle de Guatemala\Documentos\Universidad\Quinto Semestre\Tareas\Programación de Microcontroladores\Labs\Lab_07\Laboratorio_07.X\PWM.c
+[v _PWM_DUTY PWM_DUTY `(v  1 e 1 0 ]
+{
+[v PWM_DUTY@channel channel `uc  1 a 1 wreg ]
+"42
+[v PWM_DUTY@duty_var duty_var `ui  1 a 2 62 ]
+"41
+[v PWM_DUTY@channel channel `uc  1 a 1 wreg ]
+[v PWM_DUTY@duty duty `f  1 p 4 51 ]
+[v PWM_DUTY@channel channel `uc  1 a 1 61 ]
+"53
 } 0
 "10 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
 {
 [v ___xxtofl@sign sign `uc  1 a 1 wreg ]
 "13
-[v ___xxtofl@arg arg `ul  1 a 4 10 ]
+[v ___xxtofl@arg arg `ul  1 a 4 24 ]
 "12
-[v ___xxtofl@exp exp `uc  1 a 1 9 ]
+[v ___xxtofl@exp exp `uc  1 a 1 23 ]
 "10
 [v ___xxtofl@sign sign `uc  1 a 1 wreg ]
-[v ___xxtofl@val val `l  1 p 4 0 ]
+[v ___xxtofl@val val `l  1 p 4 14 ]
 "15
-[v ___xxtofl@sign sign `uc  1 a 1 8 ]
+[v ___xxtofl@sign sign `uc  1 a 1 22 ]
 "44
 } 0
 "43 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\fltol.c
 [v ___fltol __fltol `(l  1 e 4 0 ]
 {
 "45
-[v ___fltol@exp1 exp1 `uc  1 a 1 1 ]
-[v ___fltol@sign1 sign1 `uc  1 a 1 0 ]
+[v ___fltol@exp1 exp1 `uc  1 a 1 50 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 49 ]
 "43
-[v ___fltol@f1 f1 `d  1 p 4 72 ]
+[v ___fltol@f1 f1 `d  1 p 4 41 ]
 "70
 } 0
 "8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S716 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S888 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S721 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S724 . 4 `l 1 i 4 0 `d 1 f 4 0 `S716 1 fAsBytes 4 0 `S721 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S724  1 a 4 46 ]
+[s S893 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S896 . 4 `l 1 i 4 0 `d 1 f 4 0 `S888 1 fAsBytes 4 0 `S893 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S896  1 a 4 48 ]
 "12
-[v ___flmul@grs grs `ul  1 a 4 40 ]
-[s S793 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[v ___flmul@grs grs `ul  1 a 4 43 ]
+[s S965 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S796 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S793 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S796  1 a 2 50 ]
+[u S968 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S965 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S968  1 a 2 52 ]
 "10
-[v ___flmul@bexp bexp `uc  1 a 1 45 ]
+[v ___flmul@bexp bexp `uc  1 a 1 47 ]
 "11
-[v ___flmul@aexp aexp `uc  1 a 1 44 ]
+[v ___flmul@aexp aexp `uc  1 a 1 42 ]
 "9
-[v ___flmul@sign sign `uc  1 a 1 39 ]
+[v ___flmul@sign sign `uc  1 a 1 41 ]
 "8
-[v ___flmul@b b `d  1 p 4 26 ]
-[v ___flmul@a a `d  1 p 4 30 ]
+[v ___flmul@b b `d  1 p 4 28 ]
+[v ___flmul@a a `d  1 p 4 32 ]
 "205
 } 0
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\Umul8_16.c
@@ -312,48 +375,155 @@
 {
 [v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
 "6
-[v __Umul8_16@word_mpld word_mpld `ui  1 a 2 6 ]
+[v __Umul8_16@word_mpld word_mpld `ui  1 a 2 20 ]
 "5
-[v __Umul8_16@product product `ui  1 a 2 4 ]
+[v __Umul8_16@product product `ui  1 a 2 18 ]
 "4
 [v __Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
-[v __Umul8_16@multiplicand multiplicand `uc  1 p 1 0 ]
-[v __Umul8_16@multiplier multiplier `uc  1 a 1 8 ]
+[v __Umul8_16@multiplicand multiplicand `uc  1 p 1 14 ]
+[v __Umul8_16@multiplier multiplier `uc  1 a 1 22 ]
 "60
 } 0
 "8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\sprcdiv.c
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
 {
 "21
-[v ___fldiv@grs grs `ul  1 a 4 20 ]
+[v ___fldiv@grs grs `ul  1 a 4 15 ]
 "22
-[v ___fldiv@rem rem `ul  1 a 4 13 ]
+[v ___fldiv@rem rem `ul  1 a 4 8 ]
 "20
-[v ___fldiv@new_exp new_exp `i  1 a 2 18 ]
+[v ___fldiv@new_exp new_exp `i  1 a 2 13 ]
 "19
-[v ___fldiv@aexp aexp `uc  1 a 1 25 ]
+[v ___fldiv@aexp aexp `uc  1 a 1 20 ]
 "18
-[v ___fldiv@bexp bexp `uc  1 a 1 24 ]
+[v ___fldiv@bexp bexp `uc  1 a 1 19 ]
 "16
-[v ___fldiv@sign sign `uc  1 a 1 17 ]
+[v ___fldiv@sign sign `uc  1 a 1 12 ]
 "8
 [v ___fldiv@a a `d  1 p 4 0 ]
 [v ___fldiv@b b `d  1 p 4 4 ]
 "185
 } 0
+"51 C:\Users\Gabriel\OneDrive - Universidad del Valle de Guatemala\Documentos\Universidad\Quinto Semestre\Tareas\Programación de Microcontroladores\Labs\Lab_07\Laboratorio_07.X\newmain.c
+[v _isr isr `II(v  1 e 1 0 ]
+{
+"74
+} 0
+"220
+[v _map map `(ui  1 e 2 0 ]
+{
+[v map@INPUT INPUT `uc  1 a 1 wreg ]
+[v map@INPUT INPUT `uc  1 a 1 wreg ]
+[v map@IN_MIN IN_MIN `uc  1 p 1 2 ]
+[v map@IN_MAX IN_MAX `uc  1 p 1 3 ]
+"221
+[v map@OUT_MIN OUT_MIN `ui  1 p 2 4 ]
+[v map@OUT_MAX OUT_MAX `ui  1 p 2 6 ]
+[v map@INPUT INPUT `uc  1 a 1 8 ]
+"224
+} 0
+"10 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\xxtofl.c
+[v i1___xxtofl __xxtofl `(d  1 e 4 0 ]
+{
+[v i1___xxtofl@sign sign `uc  1 a 1 wreg ]
+"13
+[v i1___xxtofl@arg arg `ul  1 a 4 10 ]
+"12
+[v i1___xxtofl@exp exp `uc  1 a 1 9 ]
+"10
+[v i1___xxtofl@sign sign `uc  1 a 1 wreg ]
+[v i1___xxtofl@val val `l  1 p 4 0 ]
+"15
+[v i1___xxtofl@sign sign `uc  1 a 1 8 ]
+"44
+} 0
+"43 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\fltol.c
+[v i1___fltol __fltol `(l  1 e 4 0 ]
+{
+"45
+[v i1___fltol@exp1 exp1 `uc  1 a 1 1 ]
+[v i1___fltol@sign1 sign1 `uc  1 a 1 0 ]
+"43
+[v i1___fltol@f1 f1 `d  1 p 4 72 ]
+"70
+} 0
+"8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\sprcmul.c
+[v i1___flmul __flmul `(d  1 e 4 0 ]
+{
+[s S888 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+"13
+[s S893 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S896 . 4 `l 1 i 4 0 `d 1 f 4 0 `S888 1 fAsBytes 4 0 `S893 1 fAsWords 4 0 ]
+[v i1___flmul@prod prod `S896  1 a 4 46 ]
+"12
+[v i1___flmul@grs grs `ul  1 a 4 40 ]
+[s S965 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+"14
+[u S968 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S965 1 nAsBytes 2 0 ]
+[v i1___flmul@temp temp `S968  1 a 2 50 ]
+"10
+[v i1___flmul@bexp bexp `uc  1 a 1 45 ]
+"11
+[v i1___flmul@aexp aexp `uc  1 a 1 44 ]
+"9
+[v i1___flmul@sign sign `uc  1 a 1 39 ]
+"8
+[v i1___flmul@b b `d  1 p 4 26 ]
+[v i1___flmul@a a `d  1 p 4 30 ]
+"205
+} 0
+"4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\Umul8_16.c
+[v i1__Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+{
+[v i1__Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v i1__Umul8_16@word_mpld word_mpld `ui  1 a 2 6 ]
+"5
+[v i1__Umul8_16@product product `ui  1 a 2 4 ]
+"4
+[v i1__Umul8_16@multiplier multiplier `uc  1 a 1 wreg ]
+[v i1__Umul8_16@multiplicand multiplicand `uc  1 p 1 0 ]
+[v i1__Umul8_16@multiplier multiplier `uc  1 a 1 8 ]
+"60
+} 0
+"8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\sprcdiv.c
+[v i1___fldiv __fldiv `(d  1 e 4 0 ]
+{
+"21
+[v i1___fldiv@grs grs `ul  1 a 4 20 ]
+"22
+[v i1___fldiv@rem rem `ul  1 a 4 13 ]
+"20
+[v i1___fldiv@new_exp new_exp `i  1 a 2 18 ]
+"19
+[v i1___fldiv@aexp aexp `uc  1 a 1 25 ]
+"18
+[v i1___fldiv@bexp bexp `uc  1 a 1 24 ]
+"16
+[v i1___fldiv@sign sign `uc  1 a 1 17 ]
+"8
+[v i1___fldiv@a a `d  1 p 4 0 ]
+[v i1___fldiv@b b `d  1 p 4 4 ]
+"185
+} 0
 "10 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\sprcadd.c
-[v ___fladd __fladd `(d  1 e 4 0 ]
+[v i1___fladd __fladd `(d  1 e 4 0 ]
 {
 "17
-[v ___fladd@grs grs `uc  1 a 1 71 ]
+[v i1___fladd@grs grs `uc  1 a 1 71 ]
 "15
-[v ___fladd@bexp bexp `uc  1 a 1 70 ]
+[v i1___fladd@bexp bexp `uc  1 a 1 70 ]
 "16
-[v ___fladd@aexp aexp `uc  1 a 1 69 ]
+[v i1___fladd@aexp aexp `uc  1 a 1 69 ]
 "13
-[v ___fladd@signs signs `uc  1 a 1 68 ]
+[v i1___fladd@signs signs `uc  1 a 1 68 ]
 "10
-[v ___fladd@b b `d  1 p 4 52 ]
-[v ___fladd@a a `d  1 p 4 56 ]
+[v i1___fladd@b b `d  1 p 4 52 ]
+[v i1___fladd@a a `d  1 p 4 56 ]
 "237
+} 0
+"34 C:\Users\Gabriel\OneDrive - Universidad del Valle de Guatemala\Documentos\Universidad\Quinto Semestre\Tareas\Programación de Microcontroladores\Labs\Lab_07\Laboratorio_07.X\PWMmanual.c
+[v _PWMmanual_INT PWMmanual_INT `(v  1 e 1 0 ]
+{
+"46
 } 0

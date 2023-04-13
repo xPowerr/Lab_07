@@ -13,6 +13,10 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>newmain.c</itemPath>
+      <itemPath>PWM.h</itemPath>
+      <itemPath>PWM.c</itemPath>
+      <itemPath>PWMmanual.h</itemPath>
+      <itemPath>PWMmanual.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

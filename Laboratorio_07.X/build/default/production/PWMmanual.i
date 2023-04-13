@@ -1,4 +1,4 @@
-# 1 "newmain.c"
+# 1 "PWMmanual.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "newmain.c" 2
+# 1 "PWMmanual.c" 2
 
 
 
@@ -14,21 +14,10 @@
 
 
 
-
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
+# 1 "./PWMmanual.h" 1
 
 
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
+
 
 
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 1 3
@@ -2648,20 +2637,14 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 2 3
-# 24 "newmain.c" 2
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c90\\stdint.h" 1 3
-# 25 "newmain.c" 2
+# 6 "./PWMmanual.h" 2
 
 
-# 1 "./PWM.h" 1
-# 14 "./PWM.h"
-void PWM_SETUP(char channel, float periodo_ms);
-void PWM_DUTY(char channel, float duty);
-# 27 "newmain.c" 2
 
-# 1 "./PWMmanual.h" 1
-# 13 "./PWMmanual.h"
+
+
+
+
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "./PWMmanual.h" 2
 
@@ -2669,148 +2652,43 @@ void PWM_DUTY(char channel, float duty);
 
 void PWMmanual_setup(void);
 void PWMmanual_INT(void);
-# 28 "newmain.c" 2
+# 8 "PWMmanual.c" 2
 
 
 
 
 
+
+uint8_t LED_VAR;
 uint8_t LED_PWM;
-# 43 "newmain.c"
-unsigned int CCPR1VAR = 0;
-unsigned int CCPR2VAR = 0;
 
 
-unsigned int map(uint8_t INPUT, uint8_t IN_MIN, uint8_t IN_MAX,
-        unsigned int OUT_MIN, unsigned int OUT_MAX);
+
+void PWMmanual_setup(void) {
+
+    TRISCbits.TRISC3 = 0;
 
 
-void __attribute__((picinterrupt(("")))) isr(void) {
-    if (PIR1bits.ADIF) {
-        if (ADCON0bits.CHS == 0b0000){
-            CCPR1VAR = map(ADRESH, 0, 255, 100, 600);
-            CCPR1L = (uint8_t)(CCPR1VAR>>2);
-            CCP1CONbits.DC1B = CCPR1VAR & 0b11;
 
-        }
-        else if (ADCON0bits.CHS == 0b0100){
-            CCPR2VAR = map(ADRESH, 0, 255, 100, 600);
-            CCPR2L = (uint8_t)(CCPR2VAR>>2);
-            CCP2CONbits.DC2B0 = CCPR2VAR & 0b01;
-            CCP2CONbits.DC2B1 = CCPR2VAR & 0b10;
-
-        }
-        else if (ADCON0bits.CHS == 0b0101){
-            LED_PWM = ADRESH;
-        }
-        PIR1bits.ADIF = 0;
-    }
-    if (INTCONbits.T0IF){
-        PWMmanual_INT();
-    }
+    OPTION_REGbits.T0CS = 0;
+    OPTION_REGbits.PSA = 0;
+    OPTION_REGbits.PS2 = 0;
+    OPTION_REGbits.PS1 = 0;
+    OPTION_REGbits.PS0 = 0;
+    TMR0 = 249;
 }
 
 
-void setup(void);
-void setupPWM(void);
-void setupADC(void);
+void PWMmanual_INT(void) {
+        LED_VAR ++;
 
-
-
-void main(void) {
-
-    setup ();
-
-    setupADC ();
-    PWMmanual_setup();
-
-    PWM_SETUP(1, 4);
-    PWM_SETUP(2, 4);
-
-
-    PWM_DUTY(1, 250);
-    PWM_DUTY(2, 250);
-
-    while(1){
-        _delay((unsigned long)((10)*(4000000/4000.0)));
-        if (ADCON0bits.GO == 0) {
-            if (ADCON0bits.CHS == 0b0000){
-            ADCON0bits.CHS = 0b0100;
-            }
-            else if (ADCON0bits.CHS == 0b0100){
-            ADCON0bits.CHS = 0b0101;
-            }
-            else if (ADCON0bits.CHS == 0b0101){
-            ADCON0bits.CHS = 0b0000;
-            }
-            ADCON0bits.GO = 1;
-            _delay((unsigned long)((20)*(4000000/4000000.0)));
+        if (LED_VAR <= LED_PWM){
+            PORTCbits.RC3 = 1;
         }
-    }
-    return;
+        else{
+            PORTCbits.RC3 = 0;
+
+        }
+        INTCONbits.T0IF = 0;
+        TMR0 = 249;
 }
-
-
-void setup(void){
-
-    ANSELbits.ANS0 = 1;
-    ANSELbits.ANS4 = 1;
-    ANSELbits.ANS5 = 1;
-    ANSELH = 0;
-
-
-    TRISC = 0;
-
-
-    PORTA = 0;
-    PORTB = 0;
-    PORTC = 0;
-    PORTD = 0;
-    PORTE = 0;
-
-
-    OSCCONbits.IRCF = 0b110 ;
-    OSCCONbits.SCS = 1;
-
-
-
-    INTCONbits.GIE = 1;
-    INTCONbits.PEIE = 1;
-    INTCONbits.T0IE = 1;
-    INTCONbits.T0IF = 1;
-
-
-    PIE1bits.ADIE = 1;
-    PIR1bits.ADIF = 0;
-
-
-}
-# 186 "newmain.c"
-void setupADC(void){
-
-    ADCON0bits.CHS = 0b0000;
-
-
-
-    ADCON1bits.VCFG1 = 0;
-    ADCON1bits.VCFG0 = 0;
-
-
-    ADCON0bits.ADCS = 0b10;
-
-
-
-
-
-    ADCON1bits.ADFM = 0;
-
-
-    ADCON0bits.ADON = 1;
-    _delay((unsigned long)((1)*(4000000/4000.0)));
-}
-# 220 "newmain.c"
-unsigned int map(uint8_t INPUT, uint8_t IN_MIN, uint8_t IN_MAX,
-        unsigned int OUT_MIN, unsigned int OUT_MAX){
-    return (unsigned int)(OUT_MIN+((float)(OUT_MAX-OUT_MIN)/(IN_MAX-IN_MIN))
-            *(INPUT-IN_MIN));
-};
